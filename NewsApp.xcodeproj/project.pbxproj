@@ -12,6 +12,7 @@
 		D8517F1E200770F20061C6A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8517F1C200770F20061C6A4 /* Main.storyboard */; };
 		D8517F20200770F20061C6A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8517F1F200770F20061C6A4 /* Assets.xcassets */; };
 		D8517F23200770F20061C6A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8517F21200770F20061C6A4 /* LaunchScreen.storyboard */; };
+		D8517F2B2007AF5E0061C6A4 /* SourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8517F2A2007AF5E0061C6A4 /* SourceTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		D8517F1F200770F20061C6A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8517F22200770F20061C6A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8517F24200770F20061C6A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8517F2A2007AF5E0061C6A4 /* SourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,31 @@
 		D8517F17200770F10061C6A4 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				D8517F2D2007B9A70061C6A4 /* Controller */,
+				D8517F2C2007B99A0061C6A4 /* View */,
 				D8517F18200770F20061C6A4 /* AppDelegate.swift */,
-				D8517F1A200770F20061C6A4 /* ViewController.swift */,
 				D8517F1C200770F20061C6A4 /* Main.storyboard */,
 				D8517F1F200770F20061C6A4 /* Assets.xcassets */,
 				D8517F21200770F20061C6A4 /* LaunchScreen.storyboard */,
 				D8517F24200770F20061C6A4 /* Info.plist */,
 			);
 			path = NewsApp;
+			sourceTree = "<group>";
+		};
+		D8517F2C2007B99A0061C6A4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D8517F2A2007AF5E0061C6A4 /* SourceTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D8517F2D2007B9A70061C6A4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D8517F1A200770F20061C6A4 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +157,7 @@
 			files = (
 				D8517F1B200770F20061C6A4 /* ViewController.swift in Sources */,
 				D8517F19200770F20061C6A4 /* AppDelegate.swift in Sources */,
+				D8517F2B2007AF5E0061C6A4 /* SourceTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
