@@ -7,4 +7,6 @@ target 'NewsApp' do
 
   # Pods for NewsApp
 
+  pod 'Moya', '~> 10.0'
+
 end
