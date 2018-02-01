@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Moya
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -33,6 +34,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        let provider = MoyaProvider<NewsApiService>()
+        provider.request(.source) { result in
+            switch result {
+            case .success(let response):
+                print("Halo Response")
+                print(response)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

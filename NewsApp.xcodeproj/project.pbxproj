@@ -14,6 +14,7 @@
 		D8517F20200770F20061C6A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8517F1F200770F20061C6A4 /* Assets.xcassets */; };
 		D8517F23200770F20061C6A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8517F21200770F20061C6A4 /* LaunchScreen.storyboard */; };
 		D8517F2B2007AF5E0061C6A4 /* SourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8517F2A2007AF5E0061C6A4 /* SourceTableViewCell.swift */; };
+		D8A7F51E2023836C00440AAB /* NewsApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A7F51D2023836C00440AAB /* NewsApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D8517F22200770F20061C6A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8517F24200770F20061C6A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8517F2A2007AF5E0061C6A4 /* SourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTableViewCell.swift; sourceTree = "<group>"; };
+		D8A7F51D2023836C00440AAB /* NewsApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				D8517F1F200770F20061C6A4 /* Assets.xcassets */,
 				D8517F21200770F20061C6A4 /* LaunchScreen.storyboard */,
 				D8517F24200770F20061C6A4 /* Info.plist */,
+				D8A7F51D2023836C00440AAB /* NewsApiService.swift */,
 			);
 			path = NewsApp;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				D8517F1B200770F20061C6A4 /* MainViewController.swift in Sources */,
 				D8517F19200770F20061C6A4 /* AppDelegate.swift in Sources */,
 				D8517F2B2007AF5E0061C6A4 /* SourceTableViewCell.swift in Sources */,
+				D8A7F51E2023836C00440AAB /* NewsApiService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
