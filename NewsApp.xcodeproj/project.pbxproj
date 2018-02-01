@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A88AD87EC0506EFE59B357A /* Pods_NewsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 790842D33C063F65DA35A30E /* Pods_NewsApp.framework */; };
 		D8517F19200770F20061C6A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8517F18200770F20061C6A4 /* AppDelegate.swift */; };
-		D8517F1B200770F20061C6A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8517F1A200770F20061C6A4 /* ViewController.swift */; };
+		D8517F1B200770F20061C6A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8517F1A200770F20061C6A4 /* MainViewController.swift */; };
 		D8517F1E200770F20061C6A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8517F1C200770F20061C6A4 /* Main.storyboard */; };
 		D8517F20200770F20061C6A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8517F1F200770F20061C6A4 /* Assets.xcassets */; };
 		D8517F23200770F20061C6A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8517F21200770F20061C6A4 /* LaunchScreen.storyboard */; };
@@ -16,9 +17,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35AD346C4E1C7E0B0B512FB7 /* Pods-NewsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsApp/Pods-NewsApp.debug.xcconfig"; sourceTree = "<group>"; };
+		632D8AC4BC9B665DD5C84C1D /* Pods-NewsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewsApp/Pods-NewsApp.release.xcconfig"; sourceTree = "<group>"; };
+		790842D33C063F65DA35A30E /* Pods_NewsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8517F15200770F10061C6A4 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8517F18200770F20061C6A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D8517F1A200770F20061C6A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D8517F1A200770F20061C6A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D8517F1D200770F20061C6A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8517F1F200770F20061C6A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8517F22200770F20061C6A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A88AD87EC0506EFE59B357A /* Pods_NewsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51B7790FCB465E79B8F7F18F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				35AD346C4E1C7E0B0B512FB7 /* Pods-NewsApp.debug.xcconfig */,
+				632D8AC4BC9B665DD5C84C1D /* Pods-NewsApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D8517F0C200770F10061C6A4 = {
 			isa = PBXGroup;
 			children = (
 				D8517F17200770F10061C6A4 /* NewsApp */,
 				D8517F16200770F10061C6A4 /* Products */,
+				51B7790FCB465E79B8F7F18F /* Pods */,
+				DE59133ACB982AB5FC33391A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,9 +94,17 @@
 		D8517F2D2007B9A70061C6A4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D8517F1A200770F20061C6A4 /* ViewController.swift */,
+				D8517F1A200770F20061C6A4 /* MainViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		DE59133ACB982AB5FC33391A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				790842D33C063F65DA35A30E /* Pods_NewsApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -90,9 +114,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D8517F27200770F20061C6A4 /* Build configuration list for PBXNativeTarget "NewsApp" */;
 			buildPhases = (
+				9AA4C2BC3E7F517474444B45 /* [CP] Check Pods Manifest.lock */,
 				D8517F11200770F10061C6A4 /* Sources */,
 				D8517F12200770F10061C6A4 /* Frameworks */,
 				D8517F13200770F10061C6A4 /* Resources */,
+				6F3DAEF514780D6E0B490354 /* [CP] Embed Pods Frameworks */,
+				EF831DCD323054A81DB42196 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,12 +177,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6F3DAEF514780D6E0B490354 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewsApp/Pods-NewsApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9AA4C2BC3E7F517474444B45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NewsApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF831DCD323054A81DB42196 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewsApp/Pods-NewsApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D8517F11200770F10061C6A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8517F1B200770F20061C6A4 /* ViewController.swift in Sources */,
+				D8517F1B200770F20061C6A4 /* MainViewController.swift in Sources */,
 				D8517F19200770F20061C6A4 /* AppDelegate.swift in Sources */,
 				D8517F2B2007AF5E0061C6A4 /* SourceTableViewCell.swift in Sources */,
 			);
@@ -292,6 +370,7 @@
 		};
 		D8517F28200770F20061C6A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35AD346C4E1C7E0B0B512FB7 /* Pods-NewsApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -307,6 +386,7 @@
 		};
 		D8517F29200770F20061C6A4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 632D8AC4BC9B665DD5C84C1D /* Pods-NewsApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
