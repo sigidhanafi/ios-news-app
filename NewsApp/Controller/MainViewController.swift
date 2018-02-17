@@ -14,6 +14,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     @IBOutlet weak var tableView: UITableView!
     
+    let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    
     var sources = [[String:String]]()
 
     override func viewDidLoad() {
@@ -24,6 +26,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
+        tableView.isHidden = true
         
         loadDataSource()
     }
@@ -42,7 +45,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return sources.count
     }
     
+    
+    
     func loadDataSource() {
+        
+        self.activityIndicator.center = self.view.center
+        self.view.addSubview(activityIndicator)
+        self.activityIndicator.backgroundColor = UIColor.white
+        self.activityIndicator.bringSubview(toFront: self.view)
+        self.activityIndicator.startAnimating()
+        
         let provider = MoyaProvider<NewsApiService>()
         provider.request(.source) { result in
             switch result {
@@ -56,6 +68,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.sources.append(dataSource)
                 }
                 self.tableView.reloadData()
+                self.tableView.isHidden = false
+                self.activityIndicator.stopAnimating()
                 
             case .failure(let error):
                 print(error)
