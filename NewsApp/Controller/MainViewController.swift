@@ -22,6 +22,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         tableView.delegate = self
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
+        
+        loadDataSource()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SourceCell", for: indexPath) as! SourceTableViewCell
+        let data = sources[indexPath.row]
+        let title = data["title"]
+        let description = data["desc"]
+        cell.sourceTitle.text = title
+        cell.sourceDesc.text = description
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sources.count
+    }
+    
+    func loadDataSource() {
         let provider = MoyaProvider<NewsApiService>()
         provider.request(.source) { result in
             switch result {
@@ -40,23 +61,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print(error)
             }
         }
-        
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 140
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SourceCell", for: indexPath) as! SourceTableViewCell
-        let data = sources[indexPath.row]
-        let title = data["title"]
-        let description = data["desc"]
-        cell.sourceTitle.text = title
-        cell.sourceDesc.text = description
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sources.count
     }
     
 }
