@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
     
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    let refreshControl: UIRefreshControl = UIRefreshControl()
     
     var sources = [[String:String]]()
 
@@ -27,6 +28,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
         tableView.isHidden = true
+        tableView.addSubview(refreshControl)
+        
+        refreshControl.addTarget(self, action: #selector(handleRefreshDataSource(_:)), for: .valueChanged)
         
         loadDataSource()
     }
@@ -44,8 +48,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sources.count
     }
-    
-    
     
     func loadDataSource() {
         
@@ -75,6 +77,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print(error)
             }
         }
+    }
+    
+    @objc private func handleRefreshDataSource(_ refreshControl: UIRefreshControl) {
+        self.tableView.isHidden = true
+        self.loadDataSource()
+        refreshControl.endRefreshing()
     }
     
 }
