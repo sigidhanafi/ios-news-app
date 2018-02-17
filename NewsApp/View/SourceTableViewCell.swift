@@ -11,7 +11,8 @@ import UIKit
 class SourceTableViewCell: UITableViewCell {
     
     @IBOutlet weak var sourceTitle: UILabel!
-
+    @IBOutlet weak var sourceDesc: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

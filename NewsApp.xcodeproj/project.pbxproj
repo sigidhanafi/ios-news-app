@@ -74,6 +74,7 @@
 		D8517F17200770F10061C6A4 /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				D8A7F51F202408B200440AAB /* Model */,
 				D8517F2D2007B9A70061C6A4 /* Controller */,
 				D8517F2C2007B99A0061C6A4 /* View */,
 				D8517F18200770F20061C6A4 /* AppDelegate.swift */,
@@ -100,6 +101,13 @@
 				D8517F1A200770F20061C6A4 /* MainViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D8A7F51F202408B200440AAB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DE59133ACB982AB5FC33391A /* Frameworks */ = {
@@ -191,12 +199,14 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

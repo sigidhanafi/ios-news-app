@@ -59,6 +59,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="sourceDesc" destination="vGB-i7-yR1" id="jaD-Eh-494"/>
                                             <outlet property="sourceTitle" destination="Dfv-08-nkm" id="sYv-Ut-adU"/>
                                         </connections>
                                     </tableViewCell>

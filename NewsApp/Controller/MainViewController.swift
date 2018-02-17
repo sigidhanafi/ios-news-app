@@ -8,6 +8,7 @@
 
 import UIKit
 import Moya
+import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -17,41 +18,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        let medium: [String: String] = ["title": "Medium", "desc": "Medium merupakan salah satu sumber artikel menarik."]
-        let hackerNews: [String: String] = ["title": "Hacker News", "desc": "Hacker news, nes for hackers."]
-        sources.append(medium)
-        sources.append(hackerNews)
-        sources.append(medium)
-        sources.append(hackerNews)
-        sources.append(medium)
-        sources.append(hackerNews)
-        sources.append(medium)
-        sources.append(hackerNews)
-        sources.append(medium)
-        sources.append(hackerNews)
-        
-        tableView.dataSource = self
-        tableView.delegate = self
         
         let provider = MoyaProvider<NewsApiService>()
         provider.request(.source) { result in
             switch result {
             case .success(let response):
-                print("Halo Response")
-                print(response)
+                let responseJSON = JSON(response.data)
+                let responseSources = responseJSON["sources"]
+                for (key, sourceDict) in responseSources {
+                    let name = sourceDict["name"]
+                    let description = sourceDict["description"]
+                    let dataSource: [String: String] = ["title": "\(name)", "desc": "\(description)"]
+                    self.sources.append(dataSource)
+                }
+                self.tableView.reloadData()
+                
             case .failure(let error):
                 print(error)
             }
         }
+        
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SourceCell", for: indexPath) as! SourceTableViewCell
         let data = sources[indexPath.row]
         let title = data["title"]
+        let description = data["desc"]
         cell.sourceTitle.text = title
+        cell.sourceDesc.text = description
         return cell
     }
     
