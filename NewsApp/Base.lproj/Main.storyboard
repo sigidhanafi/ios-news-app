@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,13 +36,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sumber berita" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dfv-08-nkm">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sumber berita" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dfv-08-nkm">
                                                     <rect key="frame" x="15" y="8" width="345" height="25"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medium adalah merupakan salah satu sumber berita yang bagus" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGB-i7-yR1">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Medium adalah merupakan salah satu sumber berita yang bagus" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGB-i7-yR1">
                                                     <rect key="frame" x="15" y="41" width="345" height="23.5"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -51,6 +52,7 @@
                                             <constraints>
                                                 <constraint firstItem="Dfv-08-nkm" firstAttribute="leading" secondItem="07a-jw-ze8" secondAttribute="leading" constant="15" id="0Dg-tB-Jct"/>
                                                 <constraint firstItem="Dfv-08-nkm" firstAttribute="top" secondItem="07a-jw-ze8" secondAttribute="top" constant="8" id="2Oq-10-qFs"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="vGB-i7-yR1" secondAttribute="bottom" constant="8" id="4DB-tb-X4c"/>
                                                 <constraint firstItem="vGB-i7-yR1" firstAttribute="top" secondItem="Dfv-08-nkm" secondAttribute="bottom" constant="8" id="A4a-GP-ybN"/>
                                                 <constraint firstAttribute="trailing" secondItem="vGB-i7-yR1" secondAttribute="trailing" constant="15" id="N3X-CN-VpI"/>
                                                 <constraint firstAttribute="trailing" secondItem="Dfv-08-nkm" secondAttribute="trailing" constant="15" id="VUV-Vh-LmO"/>
