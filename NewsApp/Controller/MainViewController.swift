@@ -51,6 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func loadDataSource() {
         
+        // self.activityIndicator.center = CGPoint(x: self.view.frame.size.width / 2, y: 50)
         self.activityIndicator.center = self.view.center
         self.view.addSubview(activityIndicator)
         self.activityIndicator.backgroundColor = UIColor.white
