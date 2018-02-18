@@ -63,6 +63,7 @@
                                         <connections>
                                             <outlet property="sourceDesc" destination="vGB-i7-yR1" id="jaD-Eh-494"/>
                                             <outlet property="sourceTitle" destination="Dfv-08-nkm" id="sYv-Ut-adU"/>
+                                            <segue destination="zrl-S1-zsR" kind="showDetail" identifier="SourceDetailSegue" id="Qv9-9Q-b8J"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -84,6 +85,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="127.28635682158921"/>
+        </scene>
+        <!--Source DetailVC-->
+        <scene sceneID="sdd-un-YyO">
+            <objects>
+                <viewController id="zrl-S1-zsR" customClass="SourceDetailVC" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AFS-VA-1Jj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Page Detail Source" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xm0-WI-nO7">
+                                <rect key="frame" x="115" y="323" width="145" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="W3n-OO-ROE"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g0j-o7-QMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1004" y="127"/>
         </scene>
     </scenes>
 </document>
