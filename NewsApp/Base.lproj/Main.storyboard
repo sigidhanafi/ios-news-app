@@ -63,7 +63,6 @@
                                         <connections>
                                             <outlet property="sourceDesc" destination="vGB-i7-yR1" id="jaD-Eh-494"/>
                                             <outlet property="sourceTitle" destination="Dfv-08-nkm" id="sYv-Ut-adU"/>
-                                            <segue destination="zrl-S1-zsR" kind="show" identifier="SourceDetailSegue" id="mIX-HS-4tp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -81,6 +80,7 @@
                     <navigationItem key="navigationItem" title="News App" id="20N-aZ-Go7"/>
                     <connections>
                         <outlet property="tableView" destination="LqZ-zI-wMz" id="CJZ-Ts-Fsx"/>
+                        <segue destination="zrl-S1-zsR" kind="show" identifier="SourceDetailSegue" id="hOt-eK-1k1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g0j-o7-QMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1392.8" y="126.38680659670166"/>
+            <point key="canvasLocation" x="1324" y="126"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RcJ-hJ-gxN">

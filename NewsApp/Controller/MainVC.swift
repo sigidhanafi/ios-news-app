@@ -53,12 +53,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         // let sourceDetail = SourceDetailVC()
         // navigationController?.pushViewController(sourceDetail, animated: true)
         // let sourceDetail = self.sources[indexPath.row]
-        // performSegue(withIdentifier: "SourceDetailSegue", sender: self)
+        performSegue(withIdentifier: "SourceDetailSegue", sender: self)
     }
     
     func loadDataSource() {
-        
-        // self.activityIndicator.center = CGPoint(x: self.view.frame.size.width / 2, y: 50)
         self.activityIndicator.center = self.view.center
         self.view.addSubview(activityIndicator)
         self.activityIndicator.backgroundColor = UIColor.white

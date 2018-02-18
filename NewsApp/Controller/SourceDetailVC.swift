@@ -11,6 +11,6 @@ import UIKit
 class SourceDetailVC: UIViewController {
     
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
     }
 }
