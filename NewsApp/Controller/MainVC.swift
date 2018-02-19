@@ -50,10 +50,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // let sourceDetail = SourceDetailVC()
-        // navigationController?.pushViewController(sourceDetail, animated: true)
-        // let sourceDetail = self.sources[indexPath.row]
-        performSegue(withIdentifier: "SourceDetailSegue", sender: self)
+        let sourceDetail = SourceDetailViewController(name: "Sigit")
+         navigationController?.pushViewController(sourceDetail, animated: true)
+        // performSegue(withIdentifier: "SourceDetailSegue", sender: self)
     }
     
     func loadDataSource() {
