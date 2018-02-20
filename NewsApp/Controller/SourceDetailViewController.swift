@@ -11,8 +11,8 @@ import UIKit
 class SourceDetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     
-    var _title: String?
-    var _sourceId: String?
+    private var _title: String?
+    private var _sourceId: String?
     
     
     init(sourceId: String, title: String) {
