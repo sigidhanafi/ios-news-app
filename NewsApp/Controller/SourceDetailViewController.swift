@@ -11,11 +11,14 @@ import UIKit
 class SourceDetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     
-    var _name: String?
+    var _title: String?
+    var _sourceId: String?
     
-    init(name: String) {
+    
+    init(sourceId: String, title: String) {
         super.init(nibName: nil, bundle: nil)
-        _name = name
+        _sourceId = sourceId
+        _title = title
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,7 +28,9 @@ class SourceDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        nameLabel.text = self._name
+        nameLabel.text = self._title
+        self.navigationItem.title = self._title
+        
     }
 
 }

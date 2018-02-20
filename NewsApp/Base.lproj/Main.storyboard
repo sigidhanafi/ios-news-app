@@ -80,7 +80,6 @@
                     <navigationItem key="navigationItem" title="News App" id="20N-aZ-Go7"/>
                     <connections>
                         <outlet property="tableView" destination="LqZ-zI-wMz" id="CJZ-Ts-Fsx"/>
-                        <segue destination="zrl-S1-zsR" kind="show" identifier="SourceDetailSegue" id="hOt-eK-1k1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -90,7 +89,7 @@
         <!--Source DetailVC-->
         <scene sceneID="sdd-un-YyO">
             <objects>
-                <viewController id="zrl-S1-zsR" customClass="SourceDetailVC" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SourceDetailVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zrl-S1-zsR" customClass="SourceDetailVC" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AFS-VA-1Jj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

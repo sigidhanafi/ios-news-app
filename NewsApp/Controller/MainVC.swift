@@ -50,9 +50,11 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sourceDetail = SourceDetailViewController(name: "Sigit")
-         navigationController?.pushViewController(sourceDetail, animated: true)
-        // performSegue(withIdentifier: "SourceDetailSegue", sender: self)
+        // let sourceDetail = storyboard?.instantiateViewController(withIdentifier: "SourceDetailVC")
+        // navigationController?.pushViewController(sourceDetail!, animated: true)
+        let source = self.sources[indexPath.row]
+        let sourceDetail = SourceDetailViewController(sourceId: source["sourceId"]!, title: source["title"]!)
+        navigationController?.pushViewController(sourceDetail, animated: true)
     }
     
     func loadDataSource() {
@@ -71,7 +73,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 for (key, sourceDict) in responseSources {
                     let name = sourceDict["name"]
                     let description = sourceDict["description"]
-                    let dataSource: [String: String] = ["title": "\(name)", "desc": "\(description)"]
+                    let sourceId = sourceDict["id"]
+                    let dataSource: [String: String] = ["sourceId": "\(sourceId)", "title": "\(name)", "desc": "\(description)"]
                     self.sources.append(dataSource)
                 }
                 self.tableView.reloadData()
