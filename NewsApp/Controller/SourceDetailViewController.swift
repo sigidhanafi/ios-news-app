@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Moya
+import SwiftyJSON
 
 class SourceDetailViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
@@ -31,6 +33,15 @@ class SourceDetailViewController: UIViewController {
         nameLabel.text = self._title
         self.navigationItem.title = self._title
         
+        let provider = MoyaProvider<NewsApiService>()
+        provider.request(.source(sources: "abc-news", pageSize: 10, page: 1)) { result in
+            switch result {
+                case .success(let response):
+                    print("SUKSESSS \(response)")
+                case .failure(let error):
+                    print("ERRRR", error)
+            }
+        }
     }
 
 }

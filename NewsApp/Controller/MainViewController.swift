@@ -67,7 +67,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.activityIndicator.startAnimating()
         
         let provider = MoyaProvider<NewsApiService>()
-        provider.request(.source) { result in
+        provider.request(.sources) { result in
             switch result {
             case .success(let response):
                 let responseJSON = JSON(response.data)

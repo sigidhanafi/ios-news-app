@@ -10,19 +10,31 @@ import Foundation
 import Moya
 
 enum NewsApiService {
-    case source
+    case sources
+    case source(sources: String?, pageSize: Int?, page: Int?)
 }
 
 extension NewsApiService: TargetType {
-    var baseURL: URL { return URL(string: "https://newsapi.org/v2/sources")! }
+    var baseURL: URL {
+        switch self {
+        case .sources:
+            return URL(string: "https://newsapi.org/v2/sources")!
+        case .source:
+            return URL(string: "https://newsapi.org/v2/everything")!
+        }
+    }
     var path: String {
         switch self {
+        case .sources:
+            return ""
         case .source:
             return ""
         }
     }
     var method: Moya.Method {
         switch self {
+        case .sources:
+            return .get
         case .source:
             return .get
         }
@@ -35,8 +47,14 @@ extension NewsApiService: TargetType {
     }
     var task: Task {
         switch self {
-        case .source:
+        case .sources:
             return .requestPlain
+        case .source(let source, let pageSize, let page):
+            var params: [String: Any] = [:]
+            params["sources"] = source
+            params["pageSize"] = pageSize
+            params["page"] = page
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     var sampleData: Data {
