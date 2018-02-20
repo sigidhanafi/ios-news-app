@@ -22,6 +22,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "News App"
+        
         tableView.dataSource = self
         tableView.delegate = self
         
