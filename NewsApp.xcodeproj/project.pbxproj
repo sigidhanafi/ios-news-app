@@ -16,7 +16,6 @@
 		D8517F2B2007AF5E0061C6A4 /* SourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8517F2A2007AF5E0061C6A4 /* SourceTableViewCell.swift */; };
 		D8A7F51E2023836C00440AAB /* NewsApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A7F51D2023836C00440AAB /* NewsApiService.swift */; };
 		D8AFB6EA203A61AB00425018 /* SourceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AFB6E8203A61AB00425018 /* SourceDetailViewController.swift */; };
-		D8AFB6EB203A61AB00425018 /* SourceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8AFB6E9203A61AB00425018 /* SourceDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		D8517F2A2007AF5E0061C6A4 /* SourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTableViewCell.swift; sourceTree = "<group>"; };
 		D8A7F51D2023836C00440AAB /* NewsApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApiService.swift; sourceTree = "<group>"; };
 		D8AFB6E8203A61AB00425018 /* SourceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceDetailViewController.swift; sourceTree = "<group>"; };
-		D8AFB6E9203A61AB00425018 /* SourceDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourceDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +102,6 @@
 			children = (
 				D8517F1A200770F20061C6A4 /* MainViewController.swift */,
 				D8AFB6E8203A61AB00425018 /* SourceDetailViewController.swift */,
-				D8AFB6E9203A61AB00425018 /* SourceDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,7 +185,6 @@
 			files = (
 				D8517F23200770F20061C6A4 /* LaunchScreen.storyboard in Resources */,
 				D8517F20200770F20061C6A4 /* Assets.xcassets in Resources */,
-				D8AFB6EB203A61AB00425018 /* SourceDetailViewController.xib in Resources */,
 				D8517F1E200770F20061C6A4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

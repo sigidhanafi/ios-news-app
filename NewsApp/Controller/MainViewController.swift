@@ -52,11 +52,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // let sourceDetail = storyboard?.instantiateViewController(withIdentifier: "SourceDetailVC")
-        // navigationController?.pushViewController(sourceDetail!, animated: true)
-        let source = self.sources[indexPath.row]
-        let sourceDetail = SourceDetailViewController(sourceId: source["sourceId"]!, title: source["title"]!)
-        navigationController?.pushViewController(sourceDetail, animated: true)
+        let sourceDetailVC = storyboard?.instantiateViewController(withIdentifier: "SourceDetail")
+        navigationController?.pushViewController(sourceDetailVC!, animated: true)
+        // let source = self.sources[indexPath.row]
+        // let sourceDetail = SourceDetailViewController(sourceId: source["sourceId"]!, title: source["title"]!)
+        // navigationController?.pushViewController(sourceDetail, animated: true)
     }
     
     func loadDataSource() {
