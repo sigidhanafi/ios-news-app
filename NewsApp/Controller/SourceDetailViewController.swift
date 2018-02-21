@@ -10,13 +10,19 @@ import UIKit
 import Moya
 import SwiftyJSON
 
-class SourceDetailViewController: UIViewController {
+class SourceDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var _title: String?
     var _sourceId: String?
+    var articles = [[String: String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
 
         self.navigationItem.title = self._title
 
@@ -24,11 +30,32 @@ class SourceDetailViewController: UIViewController {
         provider.request(.source(sources: self._sourceId, pageSize: 10, page: 1)) { result in
             switch result {
                 case .success(let response):
-                    print("SUKSESSS \(response)")
+                    let responseJSON = JSON(response.data)
+                    let responseArticles = responseJSON["articles"]
+                    for (key, articleDict) in responseArticles {
+                        let title = articleDict["title"]
+                        let description = articleDict["description"]
+                        let dataArticle: [String: String] =  ["title": "\(title)", "description": "\(description)"]
+                        self.articles.append(dataArticle)
+                    }
+                    self.tableView.reloadData()
                 case .failure(let error):
                     print("ERRRR", error)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! ArticleTableViewCell
+        let data = self.articles[indexPath.row]
+        let title = data["title"]
+        // let description = data["description"]
+        cell.titleLabel.text = title
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return articles.count
     }
 
 }
