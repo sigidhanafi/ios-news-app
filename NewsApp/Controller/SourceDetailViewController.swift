@@ -15,6 +15,7 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     
     let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    let refreshControl: UIRefreshControl = UIRefreshControl()
     
     var _title: String?
     var _sourceId: String?
@@ -31,6 +32,9 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
         tableView.isHidden = true
+        tableView.addSubview(refreshControl)
+        
+        refreshControl.addTarget(self, action: #selector(handleRefreshDataArticles(_:)), for: .valueChanged)
         
         loadDataArticles()
     }
@@ -75,6 +79,12 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
                 print("ERRRR", error)
             }
         }
+    }
+    
+    @objc private func handleRefreshDataArticles(_ refreshControl: UIRefreshControl) {
+        self.tableView.isHidden = true
+        self.loadDataArticles()
+        refreshControl.endRefreshing()
     }
 
 }
