@@ -106,26 +106,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHg-9H-6Yo">
-                                                    <rect key="frame" x="30" y="19" width="315" height="21"/>
+                                                    <rect key="frame" x="15" y="19" width="345" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDv-Yv-Rfo">
-                                                    <rect key="frame" x="30" y="48" width="315" height="21"/>
+                                                    <rect key="frame" x="15" y="48" width="345" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="sHg-9H-6Yo" firstAttribute="leading" secondItem="94k-eH-X0e" secondAttribute="leadingMargin" constant="15" id="0eT-js-sEk"/>
-                                                <constraint firstItem="CDv-Yv-Rfo" firstAttribute="leading" secondItem="94k-eH-X0e" secondAttribute="leadingMargin" constant="15" id="1jk-El-F6n"/>
+                                                <constraint firstItem="sHg-9H-6Yo" firstAttribute="leading" secondItem="94k-eH-X0e" secondAttribute="leadingMargin" id="0eT-js-sEk"/>
+                                                <constraint firstItem="CDv-Yv-Rfo" firstAttribute="leading" secondItem="94k-eH-X0e" secondAttribute="leadingMargin" id="1jk-El-F6n"/>
                                                 <constraint firstItem="sHg-9H-6Yo" firstAttribute="top" secondItem="94k-eH-X0e" secondAttribute="topMargin" constant="8" id="M7g-Fv-kWI"/>
                                                 <constraint firstItem="CDv-Yv-Rfo" firstAttribute="top" secondItem="sHg-9H-6Yo" secondAttribute="bottom" constant="8" id="MDZ-lj-2pq"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="CDv-Yv-Rfo" secondAttribute="bottom" constant="8" id="VXz-Hc-1QS"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="sHg-9H-6Yo" secondAttribute="trailing" constant="15" id="cYN-hU-ohf"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="CDv-Yv-Rfo" secondAttribute="trailing" constant="15" id="zry-4i-BIA"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="sHg-9H-6Yo" secondAttribute="trailing" id="cYN-hU-ohf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="CDv-Yv-Rfo" secondAttribute="trailing" id="zry-4i-BIA"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
