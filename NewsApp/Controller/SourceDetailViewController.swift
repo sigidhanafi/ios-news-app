@@ -14,6 +14,8 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var tableView: UITableView!
     
+    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    
     var _title: String?
     var _sourceId: String?
     var articles = [[String: String]]()
@@ -28,6 +30,7 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
+        tableView.isHidden = true
         
         loadDataArticles()
     }
@@ -47,6 +50,12 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func loadDataArticles() {
+        self.activityIndicator.center = self.view.center
+        self.view.addSubview(self.activityIndicator)
+        self.activityIndicator.backgroundColor = UIColor.white
+        self.activityIndicator.bringSubview(toFront: self.view)
+        self.activityIndicator.startAnimating()
+        
         let provider = MoyaProvider<NewsApiService>()
         provider.request(.source(sources: self._sourceId, pageSize: 10, page: 1)) { result in
             switch result {
@@ -60,6 +69,8 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
                     self.articles.append(dataArticle)
                 }
                 self.tableView.reloadData()
+                self.tableView.isHidden = false
+                self.activityIndicator.stopAnimating()
             case .failure(let error):
                 print("ERRRR", error)
             }
