@@ -46,6 +46,8 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
         let description = data["description"]
         cell.titleLabel.text = title
         cell.descriptionLabel.text = description
+        downloadImage(url: URL(string: "https://cdn2.iconfinder.com/data/icons/metro-ui-icon-set/128/CNN.png")!)
+        // TODO: update cell imageView after download image is complete!
         return cell
     }
     
@@ -85,6 +87,21 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView.isHidden = true
         self.loadDataArticles()
         refreshControl.endRefreshing()
+    }
+    
+    func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            completion(data, response, error)
+        }.resume()
+    }
+    
+    func downloadImage(url: URL) {
+        print("Download started")
+        print("URL: \(url)")
+        getDataFromUrl(url: url) { data, response, error in
+            guard let data = data else { return }
+            print("Download finished! \(data)")
+        }
     }
 
 }

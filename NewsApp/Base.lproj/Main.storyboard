@@ -147,6 +147,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="articleImage" destination="MaP-1r-0WS" id="Hyg-1Z-sdW"/>
                                             <outlet property="descriptionLabel" destination="CDv-Yv-Rfo" id="a44-a1-QWi"/>
                                             <outlet property="titleLabel" destination="sHg-9H-6Yo" id="9cC-x5-n7c"/>
                                         </connections>
