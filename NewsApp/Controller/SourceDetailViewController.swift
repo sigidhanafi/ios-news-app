@@ -46,7 +46,14 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
         let description = data["description"]
         cell.titleLabel.text = title
         cell.descriptionLabel.text = description
-        downloadImage(url: URL(string: "https://cdn2.iconfinder.com/data/icons/metro-ui-icon-set/128/CNN.png")!)
+        //downloadImage(url: URL(string: "https://cdn2.iconfinder.com/data/icons/metro-ui-icon-set/128/CNN.png")!)
+        
+        if let url = URL(string: "https://cdn2.iconfinder.com/data/icons/metro-ui-icon-set/128/CNN.png") {
+            downloadImage(url: url, onComplete: { (data) in
+                let image = UIImage(data: data)
+                cell.articleImage.image = image
+            })
+        }
         // TODO: update cell imageView after download image is complete!
         return cell
     }
@@ -67,8 +74,8 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
             switch result {
             case .success(let response):
                 let responseJSON = JSON(response.data)
-                let responseArticles = responseJSON["articles"]
-                for (key, articleDict) in responseArticles {
+                let responseArticles = responseJSON["articles"].arrayValue
+                for articleDict in responseArticles {
                     let title = articleDict["title"]
                     let description = articleDict["description"]
                     let dataArticle: [String: String] =  ["title": "\(title)", "description": "\(description)"]
@@ -95,12 +102,13 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
         }.resume()
     }
     
-    func downloadImage(url: URL) {
+    func downloadImage(url: URL, onComplete: @escaping ((Data) -> Void)) {
         print("Download started")
         print("URL: \(url)")
         getDataFromUrl(url: url) { data, response, error in
             guard let data = data else { return }
             print("Download finished! \(data)")
+            onComplete(data)
         }
     }
 
