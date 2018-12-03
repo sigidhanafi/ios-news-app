@@ -102,8 +102,6 @@
 		D8517F2C2007B99A0061C6A4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D8517F2A2007AF5E0061C6A4 /* SourceTableViewCell.swift */,
-				D83D2801203DC61F0020A1F8 /* ArticleTableViewCell.swift */,
 				D87C88C021B51AD600215B79 /* SourceTableViewController.xib */,
 				D87C88C221B529EC00215B79 /* SourceTableViewCell.xib */,
 				D87C88C421B52DE500215B79 /* ArticleTableViewCell.xib */,
@@ -115,10 +113,20 @@
 		D8517F2D2007B9A70061C6A4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D8517F1A200770F20061C6A4 /* SourceTableViewController.swift */,
 				D8AFB6E8203A61AB00425018 /* SourceDetailViewController.swift */,
+				D8517F1A200770F20061C6A4 /* SourceTableViewController.swift */,
+				D87C88C821B5356400215B79 /* Cell */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D87C88C821B5356400215B79 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D8517F2A2007AF5E0061C6A4 /* SourceTableViewCell.swift */,
+				D83D2801203DC61F0020A1F8 /* ArticleTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		D8A7F51F202408B200440AAB /* Model */ = {
