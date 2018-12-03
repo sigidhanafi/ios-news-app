@@ -54,7 +54,7 @@ class SourceTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let source = self.sources[indexPath.row]
-        let sourceDetailVC = storyboard?.instantiateViewController(withIdentifier: "SourceCell") as! SourceDetailViewController
+        let sourceDetailVC = SourceDetailViewController()
         sourceDetailVC._title = source["title"]
         sourceDetailVC._sourceId = source["sourceId"]
         navigationController?.pushViewController(sourceDetailVC, animated: true)

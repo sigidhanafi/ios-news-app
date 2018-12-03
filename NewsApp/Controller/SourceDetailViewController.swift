@@ -33,6 +33,7 @@ class SourceDetailViewController: UIViewController, UITableViewDelegate, UITable
         tableView.estimatedRowHeight = 150
         tableView.isHidden = true
         tableView.addSubview(refreshControl)
+        tableView.register(UINib(nibName: "ArticleTableViewCell", bundle: nil), forCellReuseIdentifier: "ArticleCell")
         
         refreshControl.addTarget(self, action: #selector(handleRefreshDataArticles(_:)), for: .valueChanged)
         
