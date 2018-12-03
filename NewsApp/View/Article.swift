@@ -1,5 +1,5 @@
 //
-//  Sources.swift
+//  Article.swift
 //  NewsApp
 //
 //  Created by Sigit Hanafi on 03/12/18.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-class Sources {
-    let sourceId: String
+class Article {
     let title: String
     let description: String
+    let imageUrl: String
     
-    init(sourceId: String, title: String, description: String) {
-        self.sourceId = sourceId
+    init(title: String, description: String, imageUrl: String) {
         self.title = title
         self.description = description
+        self.imageUrl = imageUrl
     }
 }

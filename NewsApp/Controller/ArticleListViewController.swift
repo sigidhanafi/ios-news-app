@@ -19,7 +19,7 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
     
     var _title: String?
     var _sourceId: String?
-    var articles = [[String: String]]()
+    var articles = [Article]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +43,13 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! ArticleTableViewCell
         let data = self.articles[indexPath.row]
-        let title = data["title"]
-        let description = data["description"]
-        let imageUrl = data["imageUrl"]
+        let title = data.title
+        let description = data.description
+        let imageUrl = data.imageUrl
         cell.titleLabel.text = title
         cell.descriptionLabel.text = description
         
-        if let url = URL(string: imageUrl!) {
+        if let url = URL(string: imageUrl) {
             downloadImage(url: url, onComplete: { (data) in
                 let image = UIImage(data: data)
                 cell.articleImage.image = image
@@ -79,7 +79,7 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
                     let title = articleDict["title"]
                     let description = articleDict["description"]
                     let imageUrl = articleDict["urlToImage"]
-                    let dataArticle: [String: String] =  ["title": "\(title)", "description": "\(description)", "imageUrl": "\(imageUrl)"]
+                    let dataArticle:Article = Article(title: "\(title)", description: "\(description)", imageUrl: "\(imageUrl)")
                     self.articles.append(dataArticle)
                 }
                 self.tableView.reloadData()

@@ -17,7 +17,7 @@ class SourceListViewController: UIViewController, UITableViewDelegate, UITableVi
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     let refreshControl: UIRefreshControl = UIRefreshControl()
     
-    var sources = [Sources]()
+    var sources = [Source]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +77,7 @@ class SourceListViewController: UIViewController, UITableViewDelegate, UITableVi
                     let name = sourceDict["name"]
                     let description = sourceDict["description"]
                     let sourceId = sourceDict["id"]
-                    let dataSource: Sources = Sources(sourceId: "\(sourceId)", title: "\(name)", description: "\(description)")
+                    let dataSource:Source = Source(sourceId: "\(sourceId)", title: "\(name)", description: "\(description)")
                     self.sources.append(dataSource)
                 }
                 self.tableView.reloadData()
