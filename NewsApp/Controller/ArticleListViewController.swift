@@ -10,7 +10,7 @@ import UIKit
 import Moya
 import SwiftyJSON
 
-class SourceDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ArticleListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     

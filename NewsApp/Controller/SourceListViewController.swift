@@ -10,7 +10,7 @@ import UIKit
 import Moya
 import SwiftyJSON
 
-class SourceTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SourceListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -54,7 +54,7 @@ class SourceTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let source = self.sources[indexPath.row]
-        let sourceDetailVC = SourceDetailViewController()
+        let sourceDetailVC = ArticleListViewController()
         sourceDetailVC._title = source["title"]
         sourceDetailVC._sourceId = source["sourceId"]
         navigationController?.pushViewController(sourceDetailVC, animated: true)
