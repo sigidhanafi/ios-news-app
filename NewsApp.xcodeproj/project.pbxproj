@@ -19,6 +19,7 @@
 		D87C88C321B529EC00215B79 /* SourceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87C88C221B529EC00215B79 /* SourceTableViewCell.xib */; };
 		D87C88C521B52DE500215B79 /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87C88C421B52DE500215B79 /* ArticleTableViewCell.xib */; };
 		D87C88C721B52E7000215B79 /* ArticleListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87C88C621B52E7000215B79 /* ArticleListViewController.xib */; };
+		D87C88CA21B5408500215B79 /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87C88C921B5408500215B79 /* Sources.swift */; };
 		D8A7F51E2023836C00440AAB /* NewsApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A7F51D2023836C00440AAB /* NewsApiService.swift */; };
 		D8AFB6EA203A61AB00425018 /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AFB6E8203A61AB00425018 /* ArticleListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		D87C88C221B529EC00215B79 /* SourceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourceTableViewCell.xib; sourceTree = "<group>"; };
 		D87C88C421B52DE500215B79 /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
 		D87C88C621B52E7000215B79 /* ArticleListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListViewController.xib; sourceTree = "<group>"; };
+		D87C88C921B5408500215B79 /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sources.swift; path = NewsApp/View/Sources.swift; sourceTree = SOURCE_ROOT; };
 		D8A7F51D2023836C00440AAB /* NewsApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApiService.swift; sourceTree = "<group>"; };
 		D8AFB6E8203A61AB00425018 /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +134,7 @@
 		D8A7F51F202408B200440AAB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D87C88C921B5408500215B79 /* Sources.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8517F1B200770F20061C6A4 /* SourceListViewController.swift in Sources */,
+				D87C88CA21B5408500215B79 /* Sources.swift in Sources */,
 				D8517F19200770F20061C6A4 /* AppDelegate.swift in Sources */,
 				D8517F2B2007AF5E0061C6A4 /* SourceTableViewCell.swift in Sources */,
 				D8AFB6EA203A61AB00425018 /* ArticleListViewController.swift in Sources */,

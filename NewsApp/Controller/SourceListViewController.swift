@@ -17,7 +17,7 @@ class SourceListViewController: UIViewController, UITableViewDelegate, UITableVi
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     let refreshControl: UIRefreshControl = UIRefreshControl()
     
-    var sources = [[String:String]]()
+    var sources = [Sources]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +41,8 @@ class SourceListViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SourceCell", for: indexPath) as! SourceTableViewCell
         let data = sources[indexPath.row]
-        let title = data["title"]
-        let description = data["desc"]
+        let title = data.title
+        let description = data.description
         cell.sourceTitle.text = title
         cell.sourceDesc.text = description
         return cell
@@ -55,8 +55,8 @@ class SourceListViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let source = self.sources[indexPath.row]
         let sourceDetailVC = ArticleListViewController()
-        sourceDetailVC._title = source["title"]
-        sourceDetailVC._sourceId = source["sourceId"]
+        sourceDetailVC._title = source.title
+        sourceDetailVC._sourceId = source.sourceId
         navigationController?.pushViewController(sourceDetailVC, animated: true)
     }
     
@@ -73,11 +73,11 @@ class SourceListViewController: UIViewController, UITableViewDelegate, UITableVi
             case .success(let response):
                 let responseJSON = JSON(response.data)
                 let responseSources = responseJSON["sources"]
-                for (key, sourceDict) in responseSources {
+                for (_, sourceDict) in responseSources {
                     let name = sourceDict["name"]
                     let description = sourceDict["description"]
                     let sourceId = sourceDict["id"]
-                    let dataSource: [String: String] = ["sourceId": "\(sourceId)", "title": "\(name)", "desc": "\(description)"]
+                    let dataSource: Sources = Sources(sourceId: "\(sourceId)", title: "\(name)", description: "\(description)")
                     self.sources.append(dataSource)
                 }
                 self.tableView.reloadData()
