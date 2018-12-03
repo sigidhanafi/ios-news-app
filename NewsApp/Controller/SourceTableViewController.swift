@@ -10,8 +10,8 @@ import UIKit
 import Moya
 import SwiftyJSON
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class SourceTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var tableView: UITableView!
     
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
@@ -31,6 +31,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.estimatedRowHeight = 140
         tableView.isHidden = true
         tableView.addSubview(refreshControl)
+        tableView.register(UINib(nibName: "SourceTableViewCell", bundle: nil), forCellReuseIdentifier: "SourceCell")
         
         refreshControl.addTarget(self, action: #selector(handleRefreshDataSource(_:)), for: .valueChanged)
         
@@ -53,7 +54,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let source = self.sources[indexPath.row]
-        let sourceDetailVC = storyboard?.instantiateViewController(withIdentifier: "SourceDetail") as! SourceDetailViewController
+        let sourceDetailVC = storyboard?.instantiateViewController(withIdentifier: "SourceCell") as! SourceDetailViewController
         sourceDetailVC._title = source["title"]
         sourceDetailVC._sourceId = source["sourceId"]
         navigationController?.pushViewController(sourceDetailVC, animated: true)
