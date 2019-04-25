@@ -16,6 +16,12 @@ class SourceTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        sourceTitle.numberOfLines = 1
+        sourceTitle.lineBreakMode = .byTruncatingTail
+        
+        sourceDesc.numberOfLines = 2
+        sourceDesc.lineBreakMode = .byTruncatingTail
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

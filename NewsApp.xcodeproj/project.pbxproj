@@ -107,8 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				D87C88C021B51AD600215B79 /* SourceListViewController.xib */,
+				D8517F2A2007AF5E0061C6A4 /* SourceTableViewCell.swift */,
 				D87C88C221B529EC00215B79 /* SourceTableViewCell.xib */,
 				D87C88C421B52DE500215B79 /* ArticleTableViewCell.xib */,
+				D83D2801203DC61F0020A1F8 /* ArticleTableViewCell.swift */,
 				D87C88C621B52E7000215B79 /* ArticleListViewController.xib */,
 			);
 			path = View;
@@ -119,18 +121,8 @@
 			children = (
 				D8AFB6E8203A61AB00425018 /* ArticleListViewController.swift */,
 				D8517F1A200770F20061C6A4 /* SourceListViewController.swift */,
-				D87C88C821B5356400215B79 /* Cell */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		D87C88C821B5356400215B79 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				D8517F2A2007AF5E0061C6A4 /* SourceTableViewCell.swift */,
-				D83D2801203DC61F0020A1F8 /* ArticleTableViewCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		D8A7F51F202408B200440AAB /* Model */ = {
@@ -162,7 +154,6 @@
 				D8517F12200770F10061C6A4 /* Frameworks */,
 				D8517F13200770F10061C6A4 /* Resources */,
 				6F3DAEF514780D6E0B490354 /* [CP] Embed Pods Frameworks */,
-				EF831DCD323054A81DB42196 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,7 +222,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-NewsApp/Pods-NewsApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-NewsApp/Pods-NewsApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -246,7 +237,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewsApp/Pods-NewsApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NewsApp/Pods-NewsApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9AA4C2BC3E7F517474444B45 /* [CP] Check Pods Manifest.lock */ = {
@@ -265,21 +256,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EF831DCD323054A81DB42196 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NewsApp/Pods-NewsApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
