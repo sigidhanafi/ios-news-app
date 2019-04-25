@@ -17,7 +17,7 @@ class SourceListViewController: UIViewController, UITableViewDelegate, UITableVi
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     let refreshControl: UIRefreshControl = UIRefreshControl()
     
-    var sources = [Source]()
+    var sourceViewModels = [SourceViewModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class SourceListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SourceCell", for: indexPath) as! SourceTableViewCell
-        let data = sources[indexPath.row]
+        let data = sourceViewModels[indexPath.row]
         let title = data.title
         let description = data.description
         cell.sourceTitle.text = title
@@ -49,14 +49,14 @@ class SourceListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sources.count
+        return sourceViewModels.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let source = self.sources[indexPath.row]
+        let source = self.sourceViewModels[indexPath.row]
         let sourceDetailVC = ArticleListViewController()
         sourceDetailVC._title = source.title
-        sourceDetailVC._sourceId = source.sourceId
+        sourceDetailVC._sourceId = source.id
         navigationController?.pushViewController(sourceDetailVC, animated: true)
     }
     
@@ -72,14 +72,14 @@ class SourceListViewController: UIViewController, UITableViewDelegate, UITableVi
             switch result {
             case .success(let response):
                 let responseJSON = JSON(response.data)
-                let responseSources = responseJSON["sources"]
-                for (_, sourceDict) in responseSources {
-                    let name = sourceDict["name"]
-                    let description = sourceDict["description"]
-                    let sourceId = sourceDict["id"]
-                    let dataSource:Source = Source(sourceId: "\(sourceId)", title: "\(name)", description: "\(description)")
-                    self.sources.append(dataSource)
-                }
+                let responseSources = responseJSON["sources"].arrayValue
+                let sources = responseSources.map({ (sourceDict) -> SourceViewModel in
+                    let name = sourceDict["name"].stringValue
+                    let description = sourceDict["description"].stringValue
+                    let sourceId = sourceDict["id"].stringValue
+                    return SourceViewModel(id: "\(sourceId)", title: "\(name)", description: "\(description)")
+                })
+                self.sourceViewModels = sources
                 self.tableView.reloadData()
                 self.tableView.isHidden = false
                 self.activityIndicator.stopAnimating()
