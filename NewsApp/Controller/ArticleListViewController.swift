@@ -19,7 +19,7 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
     
     var _title: String?
     var _sourceId: String?
-    var articles = [Article]()
+    var articleViewModels = [ArticleViewModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as! ArticleTableViewCell
-        let data = self.articles[indexPath.row]
+        let data = self.articleViewModels[indexPath.row]
         let title = data.title
         let description = data.description
         let imageUrl = data.imageUrl
@@ -59,7 +59,7 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articles.count
+        return articleViewModels.count
     }
     
     func loadDataArticles() {
@@ -75,13 +75,13 @@ class ArticleListViewController: UIViewController, UITableViewDelegate, UITableV
             case .success(let response):
                 let responseJSON = JSON(response.data)
                 let responseArticles = responseJSON["articles"].arrayValue
-                for articleDict in responseArticles {
-                    let title = articleDict["title"]
-                    let description = articleDict["description"]
-                    let imageUrl = articleDict["urlToImage"]
-                    let dataArticle:Article = Article(title: "\(title)", description: "\(description)", imageUrl: "\(imageUrl)")
-                    self.articles.append(dataArticle)
-                }
+                let articles = responseArticles.map({ (articleDict) -> ArticleViewModel in
+                    let title = articleDict["title"].stringValue
+                    let description = articleDict["description"].stringValue
+                    let imageUrl = articleDict["urlToImage"].stringValue
+                    return ArticleViewModel(title: "\(title)", description: "\(description)", imageUrl: "\(imageUrl)")
+                })
+                self.articleViewModels = articles
                 self.tableView.reloadData()
                 self.tableView.isHidden = false
                 self.activityIndicator.stopAnimating()
