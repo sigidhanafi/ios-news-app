@@ -20,7 +20,7 @@ class SourceListViewController: UIViewController {
     let refreshControl: UIRefreshControl = UIRefreshControl()
     
     let disposeBag = DisposeBag()
-    var sourceViewModels: BehaviorRelay<[SourceViewModel]> = BehaviorRelay(value: [])
+    let sourceViewModel = SourceViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,65 +35,80 @@ class SourceListViewController: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(handleRefreshDataSource(_:)), for: .valueChanged)
         
-        loadDataSource()
+//        loadDataSource()
         bindRxView()
     }
     
     func bindRxView() {
-        self.sourceViewModels.bind(to: self.tableView.rx.items(cellIdentifier: "SourceCell", cellType: SourceTableViewCell.self)) { row, model, cell in
-            let title = model.title
-            let description = model.description
-            cell.sourceTitle.text = title
-            cell.sourceDesc.text = description
-        }
-            .disposed(by: disposeBag)
+//        self.sourceViewModels.bind(to: self.tableView.rx.items(cellIdentifier: "SourceCell", cellType: SourceTableViewCell.self)) { row, model, cell in
+//            let title = model.title
+//            let description = model.description
+//            cell.sourceTitle.text = title
+//            cell.sourceDesc.text = description
+//        }
+//            .disposed(by: disposeBag)
+//
+//        self.tableView.rx.modelSelected(SourceViewModel.self)
+//            .subscribe(onNext: { [weak self] source in
+//                guard let weakSelf = self else {
+//                    return
+//                }
+//                let articleListViewController = ArticleListViewController()
+//                articleListViewController._sourceId = source.id
+//                articleListViewController._title = source.title
+//                weakSelf.navigationController?.pushViewController(articleListViewController, animated: true)
+//            })
+//        .disposed(by: disposeBag)
         
-        self.tableView.rx.modelSelected(SourceViewModel.self)
-            .subscribe(onNext: { [weak self] source in
-                guard let weakSelf = self else {
-                    return
-                }
-                let articleListViewController = ArticleListViewController()
-                articleListViewController._sourceId = source.id
-                articleListViewController._title = source.title
-                weakSelf.navigationController?.pushViewController(articleListViewController, animated: true)
-            })
-        .disposed(by: disposeBag)
+        let viewDidLoadTrigger = Driver.just(())
+        let input = SourceViewModel.Input(viewDidLoad: viewDidLoadTrigger)
+        let output = self.sourceViewModel.transform(input: input)
+        
+        output.sources
+            .drive(self.tableView.rx.items(cellIdentifier: "SourceCell", cellType: SourceTableViewCell.self)) { row, model, cell in
+                let title = model.title
+                let description = model.description
+                cell.sourceTitle.text = title
+                cell.sourceDesc.text = description
+                
+                self.tableView.isHidden = false
+            }
+            .disposed(by: disposeBag)
     }
     
-    func loadDataSource() {
-        self.activityIndicator.center = self.view.center
-        self.view.addSubview(activityIndicator)
-        self.activityIndicator.backgroundColor = UIColor.white
-        self.activityIndicator.bringSubview(toFront: self.view)
-        self.activityIndicator.startAnimating()
-        
-        let provider = MoyaProvider<NewsApiService>()
-        provider.request(.sources) { result in
-            switch result {
-            case .success(let response):
-                let responseJSON = JSON(response.data)
-                let responseSources = responseJSON["sources"].arrayValue
-                let sources = responseSources.map({ (sourceDict) -> SourceViewModel in
-                    let name = sourceDict["name"].stringValue
-                    let description = sourceDict["description"].stringValue
-                    let sourceId = sourceDict["id"].stringValue
-                    return SourceViewModel(id: "\(sourceId)", title: "\(name)", description: "\(description)")
-                })
-                self.sourceViewModels.accept(sources)
-                self.tableView.reloadData()
-                self.tableView.isHidden = false
-                self.activityIndicator.stopAnimating()
-                
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
+//    func loadDataSource() {
+//        self.activityIndicator.center = self.view.center
+//        self.view.addSubview(activityIndicator)
+//        self.activityIndicator.backgroundColor = UIColor.white
+//        self.activityIndicator.bringSubview(toFront: self.view)
+//        self.activityIndicator.startAnimating()
+//
+//        let provider = MoyaProvider<NewsApiService>()
+//        provider.request(.sources) { result in
+//            switch result {
+//            case .success(let response):
+//                let responseJSON = JSON(response.data)
+//                let responseSources = responseJSON["sources"].arrayValue
+//                let sources = responseSources.map({ (sourceDict) -> SourceViewModel in
+//                    let name = sourceDict["name"].stringValue
+//                    let description = sourceDict["description"].stringValue
+//                    let sourceId = sourceDict["id"].stringValue
+//                    return SourceViewModel(id: "\(sourceId)", title: "\(name)", description: "\(description)")
+//                })
+//                self.sourceViewModels.accept(sources)
+//                self.tableView.reloadData()
+//                self.tableView.isHidden = false
+//                self.activityIndicator.stopAnimating()
+//
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
     
     @objc private func handleRefreshDataSource(_ refreshControl: UIRefreshControl) {
         self.tableView.isHidden = true
-        self.loadDataSource()
+//        self.loadDataSource()
         refreshControl.endRefreshing()
     }
     

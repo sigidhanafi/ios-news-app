@@ -133,8 +133,8 @@
 		D8517F2D2007B9A70061C6A4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D8AFB6E8203A61AB00425018 /* ArticleListViewController.swift */,
 				D8517F1A200770F20061C6A4 /* SourceListViewController.swift */,
+				D8AFB6E8203A61AB00425018 /* ArticleListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
