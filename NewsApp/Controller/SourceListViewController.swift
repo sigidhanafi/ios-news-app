@@ -45,7 +45,20 @@ class SourceListViewController: UIViewController {
             let description = model.description
             cell.sourceTitle.text = title
             cell.sourceDesc.text = description
-        }.disposed(by: disposeBag)
+        }
+            .disposed(by: disposeBag)
+        
+        self.tableView.rx.modelSelected(SourceViewModel.self)
+            .subscribe(onNext: { [weak self] source in
+                guard let weakSelf = self else {
+                    return
+                }
+                let articleListViewController = ArticleListViewController()
+                articleListViewController._sourceId = source.id
+                articleListViewController._title = source.title
+                weakSelf.navigationController?.pushViewController(articleListViewController, animated: true)
+            })
+        .disposed(by: disposeBag)
     }
     
     func loadDataSource() {
