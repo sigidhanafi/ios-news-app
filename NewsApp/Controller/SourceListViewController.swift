@@ -8,24 +8,24 @@
 
 import UIKit
 import Moya
+import RxCocoa
+import RxSwift
 import SwiftyJSON
 
-class SourceListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SourceListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     let refreshControl: UIRefreshControl = UIRefreshControl()
     
-    var sourceViewModels = [SourceViewModel]()
+    let disposeBag = DisposeBag()
+    var sourceViewModels: BehaviorRelay<[SourceViewModel]> = BehaviorRelay(value: [])
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "News App"
-        
-        tableView.dataSource = self
-        tableView.delegate = self
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
@@ -36,28 +36,16 @@ class SourceListViewController: UIViewController, UITableViewDelegate, UITableVi
         refreshControl.addTarget(self, action: #selector(handleRefreshDataSource(_:)), for: .valueChanged)
         
         loadDataSource()
+        bindRxView()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SourceCell", for: indexPath) as! SourceTableViewCell
-        let data = sourceViewModels[indexPath.row]
-        let title = data.title
-        let description = data.description
-        cell.sourceTitle.text = title
-        cell.sourceDesc.text = description
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sourceViewModels.count
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let source = self.sourceViewModels[indexPath.row]
-        let sourceDetailVC = ArticleListViewController()
-        sourceDetailVC._title = source.title
-        sourceDetailVC._sourceId = source.id
-        navigationController?.pushViewController(sourceDetailVC, animated: true)
+    func bindRxView() {
+        self.sourceViewModels.bind(to: self.tableView.rx.items(cellIdentifier: "SourceCell", cellType: SourceTableViewCell.self)) { row, model, cell in
+            let title = model.title
+            let description = model.description
+            cell.sourceTitle.text = title
+            cell.sourceDesc.text = description
+        }.disposed(by: disposeBag)
     }
     
     func loadDataSource() {
@@ -79,7 +67,7 @@ class SourceListViewController: UIViewController, UITableViewDelegate, UITableVi
                     let sourceId = sourceDict["id"].stringValue
                     return SourceViewModel(id: "\(sourceId)", title: "\(name)", description: "\(description)")
                 })
-                self.sourceViewModels = sources
+                self.sourceViewModels.accept(sources)
                 self.tableView.reloadData()
                 self.tableView.isHidden = false
                 self.activityIndicator.stopAnimating()

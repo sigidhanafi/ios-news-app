@@ -9,5 +9,7 @@ target 'NewsApp' do
 
   pod 'Moya', '~> 10.0'
   pod 'SwiftyJSON'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
 end
